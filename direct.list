@@ -1,144 +1,146 @@
-- DOMAIN,safebrowsing.urlsec.qq.com
-- DOMAIN,safebrowsing.googleapis.com
-- DOMAIN-SUFFIX,mzstatic.com
-- DOMAIN-SUFFIX,itunes.apple.com
-- DOMAIN-SUFFIX,icloud.com
-- DOMAIN-SUFFIX,icloud-content.com
-- DOMAIN-SUFFIX,me.com
-- DOMAIN-SUFFIX,aaplimg.com
-- DOMAIN-SUFFIX,cdn20.com
-- DOMAIN-SUFFIX,cdn-apple.com
-- DOMAIN-SUFFIX,akadns.net
-- DOMAIN-SUFFIX,akamaiedge.net
-- DOMAIN-SUFFIX,edgekey.net
-- DOMAIN-SUFFIX,mwcloudcdn.com
-- DOMAIN-SUFFIX,mwcname.com
-- DOMAIN-SUFFIX,apple.com
-- DOMAIN-SUFFIX,apple-cloudkit.com
-- DOMAIN-SUFFIX,apple-mapkit.com
-- DOMAIN,cn.bing.com
-- DOMAIN-SUFFIX,126.com
-- DOMAIN-SUFFIX,126.net
-- DOMAIN-SUFFIX,127.net
-- DOMAIN-SUFFIX,163.com
-- DOMAIN-SUFFIX,360buyimg.com
-- DOMAIN-SUFFIX,36kr.com
-- DOMAIN-SUFFIX,acfun.tv
-- DOMAIN-SUFFIX,air-matters.com
-- DOMAIN-SUFFIX,aixifan.com
-- DOMAIN-KEYWORD,alicdn
-- DOMAIN-KEYWORD,alipay
-- DOMAIN-KEYWORD,taobao
-- DOMAIN-SUFFIX,amap.com
-- DOMAIN-SUFFIX,autonavi.com
-- DOMAIN-KEYWORD,baidu
-- DOMAIN-SUFFIX,bdimg.com
-- DOMAIN-SUFFIX,bdstatic.com
-- DOMAIN-SUFFIX,bilibili.com
-- DOMAIN-SUFFIX,bilivideo.com
-- DOMAIN-SUFFIX,caiyunapp.com
-- DOMAIN-SUFFIX,clouddn.com
-- DOMAIN-SUFFIX,cnbeta.com
-- DOMAIN-SUFFIX,cnbetacdn.com
-- DOMAIN-SUFFIX,cootekservice.com
-- DOMAIN-SUFFIX,csdn.net
-- DOMAIN-SUFFIX,ctrip.com
-- DOMAIN-SUFFIX,dgtle.com
-- DOMAIN-SUFFIX,dianping.com
-- DOMAIN-SUFFIX,douban.com
-- DOMAIN-SUFFIX,doubanio.com
-- DOMAIN-SUFFIX,duokan.com
-- DOMAIN-SUFFIX,easou.com
-- DOMAIN-SUFFIX,ele.me
-- DOMAIN-SUFFIX,feng.com
-- DOMAIN-SUFFIX,fir.im
-- DOMAIN-SUFFIX,frdic.com
-- DOMAIN-SUFFIX,g-cores.com
-- DOMAIN-SUFFIX,godic.net
-- DOMAIN-SUFFIX,gtimg.com
-- DOMAIN,cdn.hockeyapp.net
-- DOMAIN-SUFFIX,hongxiu.com
-- DOMAIN-SUFFIX,hxcdn.net
-- DOMAIN-SUFFIX,iciba.com
-- DOMAIN-SUFFIX,ifeng.com
-- DOMAIN-SUFFIX,ifengimg.com
-- DOMAIN-SUFFIX,ipip.net
-- DOMAIN-SUFFIX,iqiyi.com
-- DOMAIN-SUFFIX,jd.com
-- DOMAIN-SUFFIX,jianshu.com
-- DOMAIN-SUFFIX,knewone.com
-- DOMAIN-SUFFIX,le.com
-- DOMAIN-SUFFIX,lecloud.com
-- DOMAIN-SUFFIX,lemicp.com
-- DOMAIN-SUFFIX,licdn.com
-- DOMAIN-SUFFIX,luoo.net
-- DOMAIN-SUFFIX,meituan.com
-- DOMAIN-SUFFIX,meituan.net
-- DOMAIN-SUFFIX,mi.com
-- DOMAIN-SUFFIX,miaopai.com
-- DOMAIN-SUFFIX,microsoft.com
-- DOMAIN-SUFFIX,microsoftonline.com
-- DOMAIN-SUFFIX,miui.com
-- DOMAIN-SUFFIX,miwifi.com
-- DOMAIN-SUFFIX,mob.com
-- DOMAIN-SUFFIX,netease.com
-- DOMAIN-SUFFIX,office.com
-- DOMAIN-SUFFIX,office365.com
-- DOMAIN-KEYWORD,officecdn
-- DOMAIN-SUFFIX,oschina.net
-- DOMAIN-SUFFIX,ppsimg.com
-- DOMAIN-SUFFIX,pstatp.com
-- DOMAIN-SUFFIX,qcloud.com
-- DOMAIN-SUFFIX,qdaily.com
-- DOMAIN-SUFFIX,qdmm.com
-- DOMAIN-SUFFIX,qhimg.com
-- DOMAIN-SUFFIX,qhres.com
-- DOMAIN-SUFFIX,qidian.com
-- DOMAIN-SUFFIX,qihucdn.com
-- DOMAIN-SUFFIX,qiniu.com
-- DOMAIN-SUFFIX,qiniucdn.com
-- DOMAIN-SUFFIX,qiyipic.com
-- DOMAIN-SUFFIX,qq.com
-- DOMAIN-SUFFIX,qqurl.com
-- DOMAIN-SUFFIX,rarbg.to
-- DOMAIN-SUFFIX,ruguoapp.com
-- DOMAIN-SUFFIX,segmentfault.com
-- DOMAIN-SUFFIX,sinaapp.com
-- DOMAIN-SUFFIX,smzdm.com
-- DOMAIN-SUFFIX,snapdrop.net
-- DOMAIN-SUFFIX,sogou.com
-- DOMAIN-SUFFIX,sogoucdn.com
-- DOMAIN-SUFFIX,sohu.com
-- DOMAIN-SUFFIX,soku.com
-- DOMAIN-SUFFIX,speedtest.net
-- DOMAIN-SUFFIX,sspai.com
-- DOMAIN-SUFFIX,suning.com
-- DOMAIN-SUFFIX,taobao.com
-- DOMAIN-SUFFIX,tencent.com
-- DOMAIN-SUFFIX,tenpay.com
-- DOMAIN-SUFFIX,tianyancha.com
-- DOMAIN-SUFFIX,tmall.com
-- DOMAIN-SUFFIX,tudou.com
-- DOMAIN-SUFFIX,umetrip.com
-- DOMAIN-SUFFIX,upaiyun.com
-- DOMAIN-SUFFIX,upyun.com
-- DOMAIN-SUFFIX,veryzhun.com
-- DOMAIN-SUFFIX,weather.com
-- DOMAIN-SUFFIX,weibo.com
-- DOMAIN-SUFFIX,xiami.com
-- DOMAIN-SUFFIX,xiami.net
-- DOMAIN-SUFFIX,xiaomicp.com
-- DOMAIN-SUFFIX,ximalaya.com
-- DOMAIN-SUFFIX,xmcdn.com
-- DOMAIN-SUFFIX,xunlei.com
-- DOMAIN-SUFFIX,yhd.com
-- DOMAIN-SUFFIX,yihaodianimg.com
-- DOMAIN-SUFFIX,yinxiang.com
-- DOMAIN-SUFFIX,ykimg.com
-- DOMAIN-SUFFIX,youdao.com
-- DOMAIN-SUFFIX,youku.com
-- DOMAIN-SUFFIX,zealer.com
-- DOMAIN-SUFFIX,zhihu.com
-- DOMAIN-SUFFIX,zhimg.com
-- DOMAIN-SUFFIX,zimuzu.tv
-- DOMAIN-SUFFIX,zoho.com
+safebrowsing.urlsec.qq.com
+safebrowsing.googleapis.com
+mzstatic.com
+itunes.apple.com
+icloud.com
+icloud-content.com
+me.com
+aaplimg.com
+cdn20.com
+cdn-apple.com
+akadns.net
+akamaiedge.net
+edgekey.net
+mwcloudcdn.com
+mwcname.com
+apple.com
+apple-cloudkit.com
+apple-mapkit.com
+cn.bing.com
+126.com
+126.net
+127.net
+163.com
+360buyimg.com
+36kr.com
+acfun.tv
+air-matters.com
+aixifan.com
+alicdn
+alipay
+taobao
+amap.com
+autonavi.com
+baidu
+bdimg.com
+bdstatic.com
+bilibili.com
+bilivideo.com
+caiyunapp.com
+clouddn.com
+cnbeta.com
+cnbetacdn.com
+cootekservice.com
+csdn.net
+ctrip.com
+dgtle.com
+dianping.com
+douban.com
+doubanio.com
+duokan.com
+easou.com
+ele.me
+feng.com
+fir.im
+frdic.com
+g-cores.com
+godic.net
+gtimg.com
+cdn.hockeyapp.net
+hongxiu.com
+hxcdn.net
+iciba.com
+ifeng.com
+ifengimg.com
+ipip.net
+iqiyi.com
+jd.com
+jianshu.com
+knewone.com
+le.com
+lecloud.com
+lemicp.com
+licdn.com
+luoo.net
+meituan.com
+meituan.net
+mi.com
+miaopai.com
+microsoft.com
+microsoftonline.com
+miui.com
+miwifi.com
+mob.com
+netease.com
+office.com
+office365.com
+officecdn
+oschina.net
+ppsimg.com
+pstatp.com
+qcloud.com
+qdaily.com
+qdmm.com
+qhimg.com
+qhres.com
+qidian.com
+qihucdn.com
+qiniu.com
+qiniucdn.com
+qiyipic.com
+qq.com
+qqurl.com
+rarbg.to
+ruguoapp.com
+segmentfault.com
+sinaapp.com
+smzdm.com
+snapdrop.net
+sogou.com
+sogoucdn.com
+sohu.com
+soku.com
+speedtest.net
+sspai.com
+suning.com
+taobao.com
+tencent.com
+tenpay.com
+tianyancha.com
+tmall.com
+tudou.com
+umetrip.com
+upaiyun.com
+upyun.com
+veryzhun.com
+weather.com
+weibo.com
+xiami.com
+xiami.net
+xiaomicp.com
+ximalaya.com
+xmcdn.com
+xunlei.com
+yhd.com
+yihaodianimg.com
+yinxiang.com
+ykimg.com
+youdao.com
+youku.com
+zealer.com
+zhihu.com
+zhimg.com
+zimuzu.tv
+zoho.com
+injections.adguard.org
+local.adguard.org
