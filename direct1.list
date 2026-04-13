@@ -1,5 +1,4 @@
-DOMAIN-SUFFIX,safebrowsing.urlsec.qq.com
-DOMAIN-SUFFIX,safebrowsing.googleapis.com
+DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,mzstatic.com
 DOMAIN-SUFFIX,itunes.apple.com
 DOMAIN-SUFFIX,icloud.com
@@ -31,7 +30,7 @@ DOMAIN-SUFFIX,alipay
 DOMAIN-SUFFIX,taobao
 DOMAIN-SUFFIX,amap.com
 DOMAIN-SUFFIX,autonavi.com
-DOMAIN-SUFFIX,baidu
+DOMAIN-KEYWORD,baidu
 DOMAIN-SUFFIX,bdimg.com
 DOMAIN-SUFFIX,bdstatic.com
 DOMAIN-SUFFIX,bilibili.com
@@ -98,7 +97,6 @@ DOMAIN-SUFFIX,qihucdn.com
 DOMAIN-SUFFIX,qiniu.com
 DOMAIN-SUFFIX,qiniucdn.com
 DOMAIN-SUFFIX,qiyipic.com
-DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,qqurl.com
 DOMAIN-SUFFIX,rarbg.to
 DOMAIN-SUFFIX,ruguoapp.com
