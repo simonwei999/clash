@@ -1,10 +1,27 @@
-# 代理补充列表
-
 # 域名后缀匹配
 DOMAIN-SUFFIX,51cg1.com
+DOMAIN-SUFFIX,telegram.org
+DOMAIN-SUFFIX,t.me
+DOMAIN-SUFFIX,whatsapp.com
+DOMAIN-SUFFIX,google.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,facebook.com
+DOMAIN-SUFFIX,良心云.com
+DOMAIN-SUFFIX,tiktok.com
+DOMAIN-SUFFIX,t66y.com
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,netflix.com
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,docker.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,mitce.net
+
 
 # 域名关键字匹配
-DOMAIN-KEYWORD,1e100
+DOMAIN-KEYWORD,youtube
+DOMAIN-KEYWORD,google
 
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
