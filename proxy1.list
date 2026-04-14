@@ -18,7 +18,8 @@ DOMAIN-SUFFIX,docker.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,mitce.net
 DOMAIN-SUFFIX,githubusercontent.com
-
+DOMAIN-SUFFIX，surfshark.com
+DOMAIN-SUFFIX，dnsleaktest.com
 # 域名关键字匹配
 DOMAIN-KEYWORD,youtube
 DOMAIN-KEYWORD,google
