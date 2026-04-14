@@ -95,24 +95,26 @@ dns:
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
-
   # 节点地区筛选
   #- {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
   #- {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)(?=.*(日|JP|Japan))^((?!(港|台|韩|新|美)).)*$"}
   #- {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "(?i)(?=.*(韩|KR|Korea))^((?!(港|台|日|新|美)).)*$"}
   #- {name: 🇸🇬 狮城节点, type: select, include-all: true, filter: "(?i)(?=.*(新加坡|SG|Singapore))^((?!(台|日|韩|美)).)*$"}
   #- {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
+  #- {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
 
   # 自动测速选择
   - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(日|JP|Japan))^((?!(港|台|韩|新|美)).)*$"}
   - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(韩|KR|Korea))^((?!(港|台|日|新|美)).)*$"}
   - {name: ♻️ 狮城自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(新加坡|SG|Singapore))^((?!(台|日|韩|美)).)*$"}
+  - {name: ♻️ 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!直连).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
+
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
 # 规则匹配
 rules:
   - RULE-SET,private_ip,直连,no-resolve
