@@ -12,18 +12,20 @@ DOMAIN-SUFFIX,tiktok.com
 DOMAIN-SUFFIX,t66y.com
 DOMAIN-SUFFIX,twitter.com
 DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,openwrt.org
 DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,github.com
 DOMAIN-SUFFIX,docker.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,mitce.net
 DOMAIN-SUFFIX,githubusercontent.com
-DOMAIN-SUFFIX，surfshark.com
-DOMAIN-SUFFIX，dnsleaktest.com
+DOMAIN-SUFFIX,surfshark.com
+DOMAIN-SUFFIX,dnsleaktest.com
+DOMAIN-SUFFIX,playstation.com
 # 域名关键字匹配
 DOMAIN-KEYWORD,youtube
 DOMAIN-KEYWORD,google
-
+DOMAIN-KEYWORD,instagram
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
 DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
