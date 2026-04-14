@@ -114,11 +114,13 @@ proxy-groups:
 
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
+  - {name: AI, type: select, proxies: [♻️ 美国自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 狮城自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
 # 规则匹配
 rules:
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,selfdirect,直连
+  - RULE-SET,ai_domain,AI
   - RULE-SET,selfproxy,🚀 默认代理
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
@@ -140,3 +142,4 @@ rule-providers:
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  ai_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
