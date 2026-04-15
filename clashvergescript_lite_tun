@@ -33,12 +33,11 @@ const dnsConfig = {
     "geosite:google,youtube,telegram,twitter,facebook": foreignNameservers
   }
 };
-
-// 规则集
+// 规则集配置
 const ruleProviders = {
   "proxy1": {
     "type": "http",
-    "format": "text",
+    "format": "text",   
     "interval": 86400,
     "behavior": "classical",
     "url": "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/proxy1.list",
@@ -51,7 +50,7 @@ const ruleProviders = {
     "behavior": "classical",
     "url": "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/direct1.list",
     "path": "./ruleset/simonwei999/direct1.txt"
-  },
+  },  
   "private_domain": {
     "type": "http",
     "format": "mrs",
@@ -59,7 +58,23 @@ const ruleProviders = {
     "behavior": "domain",
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs",
     "path": "./ruleset/simonwei999/private_domain.mrs"
-  },
+  },  
+  "private_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs", 
+    "path": "./ruleset/simonwei999/private_ip.mrs"
+  },  
+  "geolocation-!cn": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs",
+    "path": "./ruleset/simonwei999/geolocation-!cn.mrs"
+  },    
   "cn_domain": {
     "type": "http",
     "format": "mrs",
@@ -67,7 +82,7 @@ const ruleProviders = {
     "behavior": "domain",
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs",
     "path": "./ruleset/simonwei999/cn_domain.mrs"
-  },
+  },     
   "cn_ip": {
     "type": "http",
     "format": "mrs",
@@ -75,18 +90,30 @@ const ruleProviders = {
     "behavior": "ipcidr",
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs",
     "path": "./ruleset/simonwei999/cn_ip.mrs"
-  }
+  }     
+  "ai_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs",
+    "path": "./ruleset/simonwei999/ai_domain.mrs"
+  }    
 };
 
+// 规则顺序
 const rules = [
+  "RULE-SET,private_ip,全局直连,no-resolve",
   "RULE-SET,private_domain,全局直连",
-  "RULE-SET,direct1,全局直连",
+  "RULE-SET,direct1,全局直连", 
+  "RULE-SET,ai_domain,AI",
   "RULE-SET,proxy1,默认代理",
-  "RULE-SET,cn_domain,全局直连",
-  "RULE-SET,cn_ip,全局直连",
+  "RULE-SET,cn_domain,全局直连",  
+  "RULE-SET,cn_ip,全局直连",  
+  "RULE-SET,geolocation-!cn,默认代理",
   "MATCH,漏网之鱼"
 ];
-
+// 代理组通用配置
 const groupBaseOption = {
   "interval": 300,
   "timeout": 3000,
@@ -134,6 +161,13 @@ function main(config) {
       "name": "默认代理",
       "type": "select",
       "proxies": ["节点选择", "香港-自动", "美国-自动", "全局直连"]
+    },
+    {
+      ...groupBaseOption,
+      "name": "AI",
+      "type": "select",
+      "proxies": ["美国-自动", "香港-自动", "台湾-自动", "日本-自动", "新加坡-自动", "韩国-自动", "节点选择"],
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg"
     },
     {
       ...groupBaseOption,
