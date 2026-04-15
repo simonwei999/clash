@@ -41,7 +41,7 @@ profile:
 
 # 嗅探（fakeip下其实可以不用嗅探）
 sniffer:
-  enable: true
+  enable: false
   sniff:
     HTTP:
       ports: [80, 8080-8880]
