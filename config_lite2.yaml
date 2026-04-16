@@ -119,8 +119,8 @@ proxy-groups:
 rules:
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
-  - RULE-SET,selfdirect,直连
   - RULE-SET,ai_domain,AI
+  - RULE-SET,selfdirect,直连
   - RULE-SET,selfproxy,🚀 默认代理
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
