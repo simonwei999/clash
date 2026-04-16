@@ -105,8 +105,8 @@ const ruleProviders = {
 const rules = [
   "RULE-SET,private_ip,全局直连,no-resolve",
   "RULE-SET,private_domain,全局直连",
-  "RULE-SET,direct1,全局直连", 
   "RULE-SET,ai_domain,AI",
+  "RULE-SET,direct1,全局直连", 
   "RULE-SET,proxy1,默认代理",
   "RULE-SET,cn_domain,全局直连",  
   "RULE-SET,cn_ip,全局直连",  
