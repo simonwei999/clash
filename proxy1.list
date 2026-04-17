@@ -25,6 +25,7 @@ DOMAIN-SUFFIX,playstation.com
 DOMAIN-SUFFIX,dropbox.com
 DOMAIN-SUFFIX,pornhub.com
 DOMAIN-SUFFIX,xvideos.com
+DOMAIN-SUFFIX,giffgaff.com
 # 域名关键字匹配
 DOMAIN-KEYWORD,youtube
 DOMAIN-KEYWORD,google
