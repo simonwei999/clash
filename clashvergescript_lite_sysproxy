@@ -103,7 +103,7 @@ const ruleProviders = {
     "behavior": "ipcidr",
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs",
     "path": "./ruleset/simonwei999/cn_ip.mrs"
-  }     
+  }, 
   "ai_domain": {
     "type": "http",
     "format": "mrs",
