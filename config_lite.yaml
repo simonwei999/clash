@@ -117,8 +117,6 @@ proxy-groups:
   - {name: AI, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
 # 规则匹配
 rules:
-  - SRC-IP-CIDR,192.168.5.182/32,直连
-  - SRC-IP-CIDR,192.168.5.191/32,直连
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,ai_domain,AI
