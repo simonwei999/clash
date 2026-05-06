@@ -1,4 +1,6 @@
 # CMFA 适配版
+mode: rule
+
 proxy-providers:
   Airport1:
     url: "你的机场订阅链接"
@@ -8,7 +10,8 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 600
-    path: ./proxies/airport1.yaml # 显式指定手机端存储路径
+    path: ./proxies/airport1.yaml
+    # 显式指定手机端存储路径
 
 proxies:
   - {name: 直连, type: direct}
@@ -60,7 +63,8 @@ tun:
 dns:
   enable: true
   cache-algorithm: arc
-  listen: 127.0.0.1:1053 # 手机端内部监听
+  listen: 127.0.0.1:1053
+  # 手机端内部监听
   ipv6: false
   respect-rules: true
   enhanced-mode: fake-ip
