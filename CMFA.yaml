@@ -47,6 +47,10 @@ sniffer:
   skip-domain:
     - "Mijia Cloud"
     - "+.push.apple.com"
+    - "+.qq.com"
+    - "+.weixin.com"
+    - "+.huawei.com"
+    - "+.mi.com"
 
 # CMFA 的 TUN 入站配置
 tun:
