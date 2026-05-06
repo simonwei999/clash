@@ -29,7 +29,10 @@ profile:
 
 # 嗅探
 sniffer:
-  enable: true # 手机端建议开启，有助于分流更准确
+  enable: true
+  # 手机端建议开启，有助于分流更准确
+  parse-pure-ip: true
+  # 将嗅探到的域名还原回核心进行二次匹配
   sniff:
     HTTP:
       ports: [80, 8080-8880]
@@ -45,8 +48,10 @@ sniffer:
 # CMFA 的 TUN 入站配置
 tun:
   enable: true
-  stack: mixed # 手机端推荐 mixed 或 system
-  auto-route: true # 手机端必须为 true 以接管流量
+  stack: mixed
+  # 手机端推荐 mixed 或 system
+  auto-route: true
+  # 手机端必须为 true 以接管流量
   auto-detect-interface: true
   dns-hijack:
     - "any:53"
