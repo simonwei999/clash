@@ -16,12 +16,12 @@ DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,bilibili.com
 DOMAIN-SUFFIX,iqiyi.com
 DOMAIN-SUFFIX,youku.com
-DOMAIN-SUFFIX,microsoft.com
-DOMAIN-SUFFIX,live.com
-DOMAIN-SUFFIX,outlook.com
-DOMAIN-SUFFIX,office.com
-DOMAIN-SUFFIX,office365.com
-DOMAIN-SUFFIX,cn.bing.com
+# DOMAIN-SUFFIX,microsoft.com
+# DOMAIN-SUFFIX,live.com
+# DOMAIN-SUFFIX,outlook.com
+# DOMAIN-SUFFIX,office.com
+# DOMAIN-SUFFIX,office365.com
+# DOMAIN-SUFFIX,cn.bing.com
 DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,jd.com
 DOMAIN-SUFFIX,taobao.com
