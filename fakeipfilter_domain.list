@@ -158,20 +158,14 @@ ps.res.netease.com
 +.gcloudsdk.com
 #ddns
 +.dynv6.net
-
-  # 局域网网段
-  - 192.168.0.0/24
-  - 192.168.1.0/24
-  # 华为核心域名
-  - *.huawei.com
-  - *.huaweicloud.com
-  - *.hi-link.com
-  # 海雀摄像头
-  - *.ihaique.com
-  # 小豚当家摄像头
-  - *.xiaotun.com.cn
-  
-   - *.huawei.com
-  - *.hi-link.com
-  - *.ihaique.com
-  - *.huaweicloud.com
+#华为摄像头
++.hicloud.com
++.dbankcloud.com
++.dbankcloud.cn
++.iot-cloud.huawei.com
++.huawei.com
++.hi-link.com
++.ihaique.com
++.huaweicloud.com
++.hisilicon.com
++.bw.vmall.com
