@@ -111,15 +111,7 @@ const ruleProviders = {
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/whatsapp.mrs",
     "path": "./ruleset/simonwei999/whatsapp_domain.mrs"
   },
-  "whatsapp_ip": {
-    "type": "http",
-    "format": "mrs",
-    "interval": 86400,
-    "behavior": "ipcidr",
-    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/whatsapp.mrs",
-    "path": "./ruleset/simonwei999/whatsapp_ip.mrs"
-  },
-  "microsoft_domain": {
+ "microsoft_domain": {
     "type": "http",
     "format": "mrs",
     "interval": 86400,
@@ -153,7 +145,6 @@ const rules = [
   "RULE-SET,twitter_domain,twitter",
   "RULE-SET,twitter_ip,twitter", 
   "RULE-SET,whatsapp_domain,whatsapp",
-  "RULE-SET,whatsapp_ip,whatsapp",
   "RULE-SET,proxy1,默认代理",
   "RULE-SET,microsoft_domain,microsoft",
   "RULE-SET,cn_domain,全局直连",
