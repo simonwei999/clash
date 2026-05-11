@@ -123,8 +123,8 @@ rules:
   - RULE-SET,whatsapp_ip,whatsapp
   - RULE-SET,twitter_domain,twitter
   - RULE-SET,twitter_ip,twitter
-  - RULE-SET,microsoft_domain,microsoft
   - RULE-SET,selfproxy,🚀 默认代理
+  - RULE-SET,microsoft_domain,microsoft
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
   - RULE-SET,geolocation-!cn,🚀 默认代理
