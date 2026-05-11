@@ -5,15 +5,14 @@ DOMAIN-SUFFIX,t.me
 DOMAIN-SUFFIX,google.com
 DOMAIN-SUFFIX,youtube.com
 DOMAIN-SUFFIX,yt.be
-DOMAIN-SUFFIX,facebook.com
 DOMAIN-SUFFIX,良心云.com
 DOMAIN-SUFFIX,tiktok.com
 DOMAIN-SUFFIX,t66y.com
 DOMAIN-SUFFIX,openwrt.org
 DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,githubassets.com
 DOMAIN-SUFFIX,docker.com
-DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,mitce.net
 DOMAIN-SUFFIX,githubusercontent.com
 DOMAIN-SUFFIX,surfshark.com
@@ -29,7 +28,6 @@ DOMAIN-SUFFIX,reddit.com
 # 域名关键字匹配
 DOMAIN-KEYWORD,youtube
 DOMAIN-KEYWORD,google
-DOMAIN-KEYWORD,instagram
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
 DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
