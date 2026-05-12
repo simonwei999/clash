@@ -121,6 +121,7 @@ proxy-groups:
 
 # 规则匹配
 rules:
+  - SRC-IP-CIDR,192.168.5.183/32,直连
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,selfdirect,直连
