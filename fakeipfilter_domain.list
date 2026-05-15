@@ -9,7 +9,7 @@
 *.linksys.com
 *.linksyssmartwifi.com
 heartbeat.belkin.com
-
+geosite:cn
 # === 2. NTP 时间同步 (核心放行) ===
 # NTP对IP真实性极其敏感，否则会导致设备时间错误
 +.pool.ntp.org
