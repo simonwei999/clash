@@ -6,7 +6,7 @@
 # 机场订阅
 proxy-providers:
   Airport1:
-    url: "https://liangxin.xyz/api/v1/liangxin?OwO=69f453adfdf770252242863a9a7b9d78"
+    url: ""
     type: http
     interval: 86400
     health-check:
