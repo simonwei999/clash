@@ -22,7 +22,12 @@ const dnsConfig = {
   "cache-algorithm": "arc",
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
-  "fake-ip-filter": "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/fakeipfilter_domain.list",
+  "fake-ip-filter": [
+    "+.lan", "+.local", "+.msftconnecttest.com", "+.msftncsi.com",
+    "localhost.ptlogin2.qq.com", "localhost.sec.qq.com", "+.in-addr.arpa",
+    "+.ip6.arpa", "time.*.com", "time.*.gov", "pool.ntp.org",
+    "localhost.work.weixin.qq.com"
+  ],
   "default-nameserver": ["223.5.5.5", "1.2.4.8"],
   "nameserver": [...foreignNameservers],
   "proxy-server-nameserver": [...domesticNameservers],
