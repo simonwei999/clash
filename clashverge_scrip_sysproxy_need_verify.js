@@ -159,14 +159,6 @@ const ruleProviders = {
     "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs",
     "path": "./ruleset/simonwei999/google_domain.mrs"
   },
-  "youtube_domain": {
-    "type": "http",
-    "format": "mrs",
-    "interval": 86400,
-    "behavior": "domain",
-    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs",
-    "path": "./ruleset/simonwei999/youtube_domain.mrs"
-  },
   "github_domain": {
     "type": "http",
     "format": "mrs",
@@ -202,7 +194,6 @@ const rules = [
   "RULE-SET,twitter_ip,twitter", 
   "RULE-SET,google_domain,google",
   "RULE-SET,google_ip,google", 
-  "RULE-SET,youtube_domain,youtube",  
   "RULE-SET,github_domain,github",
   "RULE-SET,telegram_domain,telegram",
   "RULE-SET,telegram_ip,telegram", 
@@ -289,13 +280,6 @@ function main(config) {
       "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },    
-    { 
-      ...groupBaseOption, 
-      "name": "youtube", 
-      "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "全局直连"], 
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
-    },   
     { 
       ...groupBaseOption, 
       "name": "github", 
