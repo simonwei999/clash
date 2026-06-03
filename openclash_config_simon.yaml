@@ -120,7 +120,7 @@ proxy-groups:
   - {name: telegram, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
   - {name: tiktok, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
   - {name: google, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-  - {name: youtube, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
+#  - {name: youtube, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
   - {name: github, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
   - {name: microsoft, type: select, proxies: [直连, ♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
 
