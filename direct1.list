@@ -1,3 +1,9 @@
+# 字节跳动核心服务（头条、抖音、西瓜视频）
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,byteimg.com
+DOMAIN-SUFFIX,bytegecko.com
+DOMAIN-SUFFIX,toutiao.com
 DOMAIN-KEYWORD,huawei
 DOMAIN-KEYWORD,hicloud
 DOMAIN-KEYWORD,dbankcloud
