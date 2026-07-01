@@ -1,180 +1,160 @@
-# === 1. 系统基础与局域网 (强制解析真实IP) ===
-# 这里的域名如果返回假IP，会导致局域网服务或系统联网检测失效
-+.lan
-+.local
-+.localhost
-+.home.arpa
-*.router.asus.com
-*.router.login
-*.linksys.com
-*.linksyssmartwifi.com
-heartbeat.belkin.com
-
-# === 2. NTP 时间同步 (核心放行) ===
-# NTP对IP真实性极其敏感，否则会导致设备时间错误
+#LAN
+*
+*.lan
+*.localdomain
+*.example
+*.invalid
+*.localhost
+*.test
+*.local
+*.home.arpa
+*.direct
+#放行NTP服务
+time.*.com
+time.*.gov
+time.*.edu.cn
+time.*.apple.com
+time-ios.apple.com
+time1.*.com
+time2.*.com
+time3.*.com
+time4.*.com
+time5.*.com
+time6.*.com
+time7.*.com
+ntp.*.com
+ntp1.*.com
+ntp2.*.com
+ntp3.*.com
+ntp4.*.com
+ntp5.*.com
+ntp6.*.com
+ntp7.*.com
+*.time.edu.cn
+*.ntp.org.cn
 +.pool.ntp.org
-+.ntp.org.cn
-time*.apple.com
-time*.cloud.tencent.com
-time*.google.com
-time*.gov
-time*.edu.cn
-ntp*.com
-
-# === 3. 监控、智能家居与远程控制 (你的核心需求) ===
-# 华为/海雀监控
-+.hicloud.com
-+.dbankcloud.com
-+.dbankcloud.cn
-+.iot-cloud.huawei.com
-+.huawei-3com.com
-+.huawei.asia
-+.huawei.com
-+.huawei.eu
-+.huawei.ru
-+.huaweiacad.com
-+.huaweiapaas.com
-+.huaweiapi.com
-+.huaweicloud-dns.com
-+.huaweicloud-dns.net
-+.huaweicloud-dns.org
-+.huaweicloud-idme.com
-+.huaweicloud-koophone.com
-+.huaweicloud-smn.com
-+.huaweicloud-smn.net
-+.huaweicloud.com
-+.huaweicloudapis.com
-+.huaweicloudlive.com
-+.huaweicloudsite.com
-+.huaweicloudwaf.com
-+.huaweidevice.com
-+.huaweidevice.tel
-+.huaweidun.com
-+.huaweielab.com
-+.huaweifile.com
-+.huaweiief.com
-+.huaweiita.com
-+.huaweils.com
-+.huaweimall.com
-+.huaweimarine.com
-+.huaweimarketplace.com
-+.huaweimossel.com
-+.huaweioneaccess.com
-+.huaweirtc.com
-+.huaweisafedns.com
-+.huaweishop.net
-+.huaweisoft.com
-+.huaweisre.com
-+.huaweistatic.com
-+.huaweiuniversity.com
-+.huaweiyun.com
-+.huaweizdl.com
-+.海雀.com
-+.hi-link.com
-+.ihaique.com
-+.huaweicloud.com
-+.hisilicon.com
-+.bw.vmall.com
-+.myhuaweicloud.com
-+.myhuaweicloud-custom.com
-+.myhuaweicloud-date.com
-+.myhuaweicloud-koodrive.com
-+.myhuaweicloud-obs.com
-+.api-ivm.myhuaweicloud.com
-+.console.huaweicloud.com
-+.huawei.com
-+.holosens.huawei.com
-+.cmcc.com
-+.andlink.cn
-+.hejiazhen.com
-+.10086.cn
-+.time.myhuaweicloud.com
-+.ntp.myhuaweicloud.com
-+.update.huawei.com
-+.log-report.myhuaweicloud.com
-+.obs.cn-north-4.myhuaweicloud.com
-+.obs.cn-south-1.myhuaweicloud.com
-+.hejiaqin.com
-+.komect.com
-+.hy.10086.cn
-+.cmcc.com
-+.andlink.cn
-+.video.komect.com
-+.uem.migu.cn
-+.migu.cn
-+.xiaoxi.hjq.komect.com
-# 小米/米家
-Mijia Cloud
-+.market.xiaomi.com
-+.miui.com
-# 向日葵/花生壳 (DDNS需真实IP)
-+.oray.com
-+.orayimg.com
-+.dynv6.net
-
-# === 4. 社交与特定登录 (解决登录白屏/挂起) ===
-# QQ/微信登录 (本地校验)
-localhost.ptlogin2.qq.com
-localhost.sec.qq.com
-localhost.*.weixin.qq.com
-+.kk-rays.com
-# 招商银行
-+.cmbchina.com
-+.cmbimg.com
-
-# === 5. 音乐服务 (防止版权检测异常) ===
-+.music.163.com
-+.126.net
-+.music.126.net
-+.kuwo.cn
-+.xiami.com
-+.music.migu.cn
-+.y.qq.com
-# QQ音乐CDN
+time1.cloud.tencent.com
+#放行网易云音乐
+music.163.com
+*.music.163.com
+*.126.net
+#百度音乐
+musicapi.taihe.com
+music.taihe.com
+#酷狗音乐
+songsearch.kugou.com
+trackercdn.kugou.com
+#酷我音乐
+*.kuwo.cn
+#JOOX音乐
+api-jooxtt.sanook.com
+api.joox.com
+joox.com
+#QQ音乐
+y.qq.com
+*.y.qq.com
 streamoc.music.tc.qq.com
 mobileoc.music.tc.qq.com
 isure.stream.qqmusic.qq.com
 dl.stream.qqmusic.qq.com
-# 其他音乐
-+.taihe.com
-+.kugou.com
-+.joox.com
-
-# === 6. 游戏平台与下载 (提升连接稳定性) ===
-# Steam/Nintendo/Xbox
+aqqmusic.tc.qq.com
+amobile.music.tc.qq.com
+#虾米音乐
+*.xiami.com
+#咪咕音乐
+*.music.migu.cn
+music.migu.cn
+#win10本地连接检测
++.msftconnecttest.com
++.msftncsi.com
+#QQ登录
+localhost.ptlogin2.qq.com
+localhost.sec.qq.com
+#微信登录
+localhost.*.weixin.qq.com
++.kk-rays.com
+#Game
+#Steam
 +.steamcontent.com
+#Nintendo Switch
 +.srv.nintendo.net
+*.n.n.srv.nintendo.net
 +.cdn.nintendo.net
-+.xboxlive.com
-# 暴雪/网易/其他
+#Microsoft Xbox
+xbox.*.*.microsoft.com
+*.*.xboxlive.com
+xbox.*.microsoft.com
+xnotify.xboxlive.com
+#Wotgame
 +.battle.net
 +.battlenet.com.cn
 +.wotgame.cn
++.wggames.cn
++.wowsgame.cn
 +.wargaming.net
-+.uu.163.com
-# 最终幻想14
-+.square-enix.com
-+.finalfantasyxiv.com
-+.ffxiv.com
-+.sdo.com
-
-# === 7. 系统更新与工具 ===
-# Apple 更新
-+.apple.com
-# 联网检测
-+.msftconnecttest.com
-+.msftncsi.com
-# 广告拦截/下载
-+.sandai.net
-+.n0808.com
+#Golang
+proxy.golang.org
+#STUN
++.stun.*.*
++.stun.*.*.*
++.stun.*.*.*.*
++.stun.*.*.*.*.*
+#Linksys Router
+heartbeat.belkin.com
+*.linksys.com
+*.linksyssmartwifi.com
+#ASUS Router
+*.router.asus.com
+#Apple Software Update Service
+mesu.apple.com
+swscan.apple.com
+swquery.apple.com
+swdownload.apple.com
+swcdn.apple.com
+swdist.apple.com
+#Google
+lens.l.google.com
+na.b.g-tun.com
+#FinalFantasy XIV Worldwide Server & CN Server
+*.square-enix.com
+*.finalfantasyxiv.com
+*.ffxiv.com
+*.ff14.sdo.com
+ff.dorado.sdo.com
+#Bilibili
+*.mcdn.bilivideo.cn
+#Disney Plus
++.media.dssott.com
+#shark007 Codecs
+shark007.net
+#Mijia
+Mijia Cloud
+#Xiaomi
++.market.xiaomi.com
+#招商银行
++.cmbchina.com
++.cmbimg.com
+#AdGuard
 adguardteam.github.io
+adrules.top
 anti-ad.net
 local.adguard.org
-
-# === 8. 其他特殊服务 ===
-# STUN (P2P打洞)
-+.stun.*
-# Bilibili CDN
-*.mcdn.bilivideo.cn
-# WiFi Calling
+static.adtidy.org
+#迅雷
++.sandai.net
++.n0808.com
+#T-mobile and Ultra Mobile wifi calling
 +.3gppnetwork.org
+#UU Plugin
++.uu.163.com
+ps.res.netease.com
+#Wifi Calling
++.pub.3gppnetwork.org
+#向日葵远程控制
++.oray.com
++.orayimg.com
+#LOL语音
++.gcloudcs.com
++.gcloudsdk.com
+#ddns
++.dynv6.net
