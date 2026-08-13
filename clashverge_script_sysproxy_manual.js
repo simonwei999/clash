@@ -1,0 +1,319 @@
+// 国内DNS服务器
+const domesticNameservers = [
+  "https://223.5.5.5/dns-query",
+  "https://doh.pub/dns-query"
+];
+
+// 国外DNS服务器
+const foreignNameservers = [
+  "https://208.67.222.222/dns-query",
+  "https://1.1.1.1/dns-query",
+  "https://8.8.4.4/dns-query"
+];
+
+// DNS配置
+const dnsConfig = {
+  "enable": true,
+  "listen": "0.0.0.0:1053",
+  "ipv6": false,
+  "prefer-h3": false,
+  "respect-rules": true,
+  "use-system-hosts": false,
+  "cache-algorithm": "arc",
+  "enhanced-mode": "fake-ip",
+  "fake-ip-range": "198.18.0.1/16",
+  "fake-ip-filter": [
+    "+.lan", "+.local", "+.msftconnecttest.com", "+.msftncsi.com",
+    "localhost.ptlogin2.qq.com", "localhost.sec.qq.com", "+.in-addr.arpa",
+    "+.ip6.arpa", "time.*.com", "time.*.gov", "pool.ntp.org",
+    "localhost.work.weixin.qq.com"
+  ],
+  "default-nameserver": ["223.5.5.5", "1.2.4.8"],
+  "nameserver": [...foreignNameservers],
+  "proxy-server-nameserver": [...domesticNameservers],
+  "direct-nameserver": [...domesticNameservers],
+  "nameserver-policy": {
+    "geosite:private,cn": domesticNameservers
+  }
+};
+
+// 规则集配置
+const ruleProviders = {
+  "proxy1": {
+    "type": "http",
+    "format": "text",
+    "interval": 86400,
+    "behavior": "classical",
+    "url": "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/proxy1.list",
+    "path": "./ruleset/simonwei999/proxy1.txt"
+  },
+  "direct1": {
+    "type": "http",
+    "format": "text",
+    "interval": 86400,
+    "behavior": "classical",
+    "url": "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/direct1.list",
+    "path": "./ruleset/simonwei999/direct1.txt"
+  },
+  "private_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs",
+    "path": "./ruleset/simonwei999/private_domain.mrs"
+  },
+  "private_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs",
+    "path": "./ruleset/simonwei999/private_ip.mrs"
+  },
+  "geolocation-!cn": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs",
+    "path": "./ruleset/simonwei999/geolocation-!cn.mrs"
+  },
+  "cn_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs",
+    "path": "./ruleset/simonwei999/cn_domain.mrs"
+  },
+  "cn_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs",
+    "path": "./ruleset/simonwei999/cn_ip.mrs"
+  }, // 此处原先漏掉了逗号
+  "ai_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs",
+    "path": "./ruleset/simonwei999/ai_domain.mrs"
+  },
+  "meta_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meta.mrs",
+    "path": "./ruleset/simonwei999/meta_domain.mrs"
+  },
+ "microsoft_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs",
+    "path": "./ruleset/simonwei999/microsoft_domain.mrs"
+  },
+  "telegram_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs",
+    "path": "./ruleset/simonwei999/telegram_domain.mrs"
+  },
+  "telegram_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs",
+    "path": "./ruleset/simonwei999/telegram_ip.mrs"
+  },
+  "tiktok_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs",
+    "path": "./ruleset/simonwei999/tiktok_domain.mrs"
+  },
+  "google_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs",
+    "path": "./ruleset/simonwei999/google_ip.mrs"
+  },
+  "google_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs",
+    "path": "./ruleset/simonwei999/google_domain.mrs"
+  },
+  "github_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs",
+    "path": "./ruleset/simonwei999/github_domain.mrs"
+  },  
+  "twitter_domain": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "domain",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs",
+    "path": "./ruleset/simonwei999/twitter_domain.mrs"
+  },  
+  "twitter_ip": {
+    "type": "http",
+    "format": "mrs",
+    "interval": 86400,
+    "behavior": "ipcidr",
+    "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs",
+    "path": "./ruleset/simonwei999/twitter_ip.mrs"
+  },  
+};
+
+const rules = [
+  "RULE-SET,private_ip,全局直连,no-resolve",
+  "RULE-SET,private_domain,全局直连",
+  "RULE-SET,direct1,全局直连",
+  "RULE-SET,ai_domain,AI",
+  "RULE-SET,twitter_domain,twitter",
+  "RULE-SET,twitter_ip,twitter", 
+  "RULE-SET,google_domain,google",
+  "RULE-SET,google_ip,google", 
+  "RULE-SET,github_domain,github",
+  "RULE-SET,telegram_domain,telegram",
+  "RULE-SET,telegram_ip,telegram", 
+  "RULE-SET,tiktok_domain,tiktok",  
+  "RULE-SET,meta_domain,meta",
+  "RULE-SET,proxy1,默认代理",
+  "RULE-SET,microsoft_domain,microsoft",
+  "RULE-SET,cn_domain,全局直连",
+  "RULE-SET,cn_ip,全局直连",
+  "RULE-SET,geolocation-!cn,默认代理",
+  "MATCH,漏网之鱼"
+];
+
+const groupBaseOption = {
+  "interval": 300,
+  "timeout": 3000,
+  "url": "https://www.google.com/generate_204",
+  "lazy": true,
+  "max-failed-times": 3,
+  "hidden": false
+};
+
+function main(config) {
+  const proxyCount = config?.proxies?.length ?? 0;
+  const proxyProviderCount = typeof config?.["proxy-providers"] === "object" ? Object.keys(config["proxy-providers"]).length : 0;
+
+  if (proxyCount === 0 && proxyProviderCount === 0) {
+    throw new Error("配置文件中未找到任何代理");
+  }
+
+  // 覆盖配置
+  config["dns"] = dnsConfig;
+  config["rule-providers"] = ruleProviders;
+  config["rules"] = rules;
+
+  config["proxy-groups"] = [
+    { ...groupBaseOption, "name": "节点选择", "type": "select", "include-all": true, "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg" },
+    { ...groupBaseOption, "name": "全局直连", "type": "select", "proxies": ["DIRECT"], "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg" },
+    { ...groupBaseOption, "name": "美国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广美|US|美国|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)" },
+    { ...groupBaseOption, "name": "香港-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广港|香港|HK|Hong Kong|🇭🇰|Hong_Kong|HongKong)" },
+    { ...groupBaseOption, "name": "台湾-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)" },
+    { ...groupBaseOption, "name": "日本-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)" },
+    { ...groupBaseOption, "name": "韩国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)" },
+    { ...groupBaseOption, "name": "英国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(英国|UK|London)" },
+    { ...groupBaseOption, "name": "新加坡-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)" },
+    { 
+      ...groupBaseOption, 
+      "name": "默认代理", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },
+    { 
+      ...groupBaseOption, 
+      "name": "meta", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },
+    { 
+      ...groupBaseOption, 
+      "name": "twitter", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },
+    { 
+      ...groupBaseOption, 
+      "name": "telegram", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },    
+    { 
+      ...groupBaseOption, 
+      "name": "tiktok", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },    
+    { 
+      ...groupBaseOption, 
+      "name": "google", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },    
+    { 
+      ...groupBaseOption, 
+      "name": "github", 
+      "type": "select", 
+      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },       
+    { 
+      ...groupBaseOption, 
+      "name": "microsoft", 
+      "type": "select", 
+      "proxies": ["全局直连", "新加坡-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "香港-自动"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },
+    { 
+      ...groupBaseOption, 
+      "name": "AI", 
+      "type": "select", 
+      "proxies": ["美国-自动", "香港-自动", "台湾-自动", "日本-自动", "新加坡-自动", "韩国-自动", "节点选择", "英国-自动"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
+    },
+    { 
+      ...groupBaseOption, 
+      "name": "漏网之鱼", 
+      "type": "select", 
+      "proxies": ["默认代理", "节点选择", "全局直连"], 
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg" 
+    }
+  ];
+
+  if (config["proxies"]) {
+    config["proxies"].forEach(p => { p.udp = true; });
+  }
+
+  return config;
+}
