@@ -237,7 +237,7 @@ function main(config) {
     { ...groupBaseOption, "name": "台湾-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)" },
     { ...groupBaseOption, "name": "日本-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)" },
     { ...groupBaseOption, "name": "韩国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)" },
-    { ...groupBaseOption, "name": "英国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(英国|UK|GB)" },
+    { ...groupBaseOption, "name": "英国-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(英国|UK|London)" },
     { ...groupBaseOption, "name": "新加坡-自动", "type": "url-test", "tolerance": 200, "include-all": true, "filter": "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)" },
     { 
       ...groupBaseOption, 
