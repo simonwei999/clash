@@ -125,7 +125,7 @@ proxy-groups:
   - {name: ♻️ 狮城手动, type: select, include-all: true, filter: "(?i)(?=.*(新加坡|SG|Singapore))^((?!(台|日|韩|美)).)*$"}
   - {name: ♻️ 台湾手动, type: select, include-all: true, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
   - {name: ♻️ 美国手动, type: select, include-all: true, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 英国手动, type: select, include-all: true, filter: "(?i)(?=.*(英|UK|GB))^((?!(港|台|日|韩|新)).)*$"}
+  - {name: ♻️ 英国手动, type: select, include-all: true, filter: "(?i)(?=.*(英|UK|London))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 手动选择, type: select, include-all: true, filter: "^((?!直连).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
   - {name: 🌐 测试节点, type: select, include-all: true}
