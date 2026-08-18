@@ -232,74 +232,74 @@ function main(config) {
   config["proxy-groups"] = [
     { ...groupBaseOption, "name": "节点选择", "type": "select", "include-all": true, "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg" },
     { ...groupBaseOption, "name": "全局直连", "type": "select", "proxies": ["DIRECT"], "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg" },
-    { ...groupBaseOption, "name": "美国-自动", "type": "select", "include-all": true, "filter": "(广美|US|美国|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)" },
-    { ...groupBaseOption, "name": "香港-自动", "type": "select", "include-all": true, "filter": true, "filter": "(广港|香港|HK|Hong Kong|🇭🇰|Hong_Kong|HongKong)" },
-    { ...groupBaseOption, "name": "台湾-自动", "type": "select", "include-all": true, "filter": true, "filter": "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)" },
-    { ...groupBaseOption, "name": "日本-自动", "type": "select", "include-all": true, "filter"": "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)" },
-    { ...groupBaseOption, "name": "韩国-自动", "type": "select", "include-all": true, "filter": "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)" },
-    { ...groupBaseOption, "name": "英国-自动", "type": "select", "include-all": true, "filter": "(英国|UK|London)" },
-    { ...groupBaseOption, "name": "新加坡-自动", "type": "select", "include-all": true, "filter": "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)" },
+    { ...groupBaseOption, "name": "美国-手动", "type": "select", "include-all": true, "filter": "(广美|US|美国|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)" },
+    { ...groupBaseOption, "name": "香港-手动", "type": "select", "include-all": true, "filter": "(广港|香港|HK|Hong Kong|🇭🇰|Hong_Kong|HongKong)" },
+    { ...groupBaseOption, "name": "台湾-手动", "type": "select", "include-all": true, "filter": "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)" },
+    { ...groupBaseOption, "name": "日本-手动", "type": "select", "include-all": true, "filter": "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)" },
+    { ...groupBaseOption, "name": "韩国-手动", "type": "select", "include-all": true, "filter": "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)" },
+    { ...groupBaseOption, "name": "英国-手动", "type": "select", "include-all": true, "filter": "(英国|UK|London)" },
+    { ...groupBaseOption, "name": "新加坡-手动", "type": "select", "include-all": true, "filter": "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)" },
     { 
       ...groupBaseOption, 
       "name": "默认代理", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },
     { 
       ...groupBaseOption, 
       "name": "meta", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },
     { 
       ...groupBaseOption, 
       "name": "twitter", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },
     { 
       ...groupBaseOption, 
       "name": "telegram", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },    
     { 
       ...groupBaseOption, 
       "name": "tiktok", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },    
     { 
       ...groupBaseOption, 
       "name": "google", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },    
     { 
       ...groupBaseOption, 
       "name": "github", 
       "type": "select", 
-      "proxies": ["新加坡-自动", "香港-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "全局直连"], 
+      "proxies": ["新加坡-手动", "香港-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "全局直连"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },       
     { 
       ...groupBaseOption, 
       "name": "microsoft", 
       "type": "select", 
-      "proxies": ["全局直连", "新加坡-自动", "美国-自动", "台湾-自动", "日本-自动", "韩国-自动", "节点选择", "英国-自动", "香港-自动"], 
+      "proxies": ["全局直连", "新加坡-手动", "美国-手动", "台湾-手动", "日本-手动", "韩国-手动", "节点选择", "英国-手动", "香港-手动"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },
     { 
       ...groupBaseOption, 
       "name": "AI", 
       "type": "select", 
-      "proxies": ["美国-自动", "香港-自动", "台湾-自动", "日本-自动", "新加坡-自动", "韩国-自动", "节点选择", "英国-自动"], 
+      "proxies": ["美国-手动", "香港-手动", "台湾-手动", "日本-手动", "新加坡-手动", "韩国-手动", "节点选择", "英国-手动"], 
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg" 
     },
     { 
