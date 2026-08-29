@@ -13,6 +13,8 @@ DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,github.com
 DOMAIN-SUFFIX,githubassets.com
 DOMAIN-SUFFIX,docker.com
+DOMAIN-SUFFIX,registry-1.docker.io
+DOMAIN-SUFFIX,docker.io
 DOMAIN-SUFFIX,mitce.net
 DOMAIN-SUFFIX,githubusercontent.com
 DOMAIN-SUFFIX,playstation.com
