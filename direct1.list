@@ -1,5 +1,7 @@
 # 字节跳动核心服务（头条、抖音、西瓜视频）
 DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,simonwei.cc.cd
+DOMAIN-SUFFIX,cc.cd
 DOMAIN-SUFFIX,pstatp.com
 DOMAIN-SUFFIX,byteimg.com
 DOMAIN-SUFFIX,bytegecko.com
