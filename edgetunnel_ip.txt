@@ -1,1 +1,3 @@
 https://raw.githubusercontent.com/LancelotRar/best-cf-domains/main/best-cf-domain.txt
+https://raw.githubusercontent.com/LancelotRar/best-cf-ips/main/best-cf-ipv4.txt
+https://raw.githubusercontent.com/LancelotRar/best-cf-ips/main/official-cf-ipv4-random50.txt
