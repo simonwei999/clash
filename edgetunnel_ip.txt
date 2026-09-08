@@ -1,6 +1,9 @@
 
 项目地址：
 https://github.com/LancelotRar/best-cf-ips
+https://github.com/gslege/CloudflareIP/tree/main
+
+
 
 优选域名
 https://raw.githubusercontent.com/LancelotRar/best-cf-domains/main/best-cf-domain.txt
@@ -8,3 +11,6 @@ https://raw.githubusercontent.com/LancelotRar/best-cf-domains/main/best-cf-domai
 优选ip
 https://raw.githubusercontent.com/LancelotRar/best-cf-ips/main/best-cf-ipv4.txt
 https://raw.githubusercontent.com/LancelotRar/best-cf-ips/main/official-cf-ipv4-random50.txt
+
+https://raw.githubusercontent.com/gslege/CloudflareIP/refs/heads/main/SG.txt
+
