@@ -14,10 +14,27 @@ proxy-providers:
       interval: 300
     proxy: 直连
 
+  Airport2:
+    url: "机场订阅填到这里"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+
 # 节点信息
 proxies:
   - {name: 直连, type: direct}
-
+  #- name:             # 落地节点命名
+  #  type: socks5      # 节点协议
+  #  server:            # 住宅IP 代理地址
+  #  port:              # 端口号
+  #  username:         # 用户名
+  #  password:         # 密码
+  #  udp: true
+  #  dialer-proxy: 香港-链式前置  # 指定前置代理节点组
 # 全局配置 
 mixed-port: 7890
 allow-lan: true
