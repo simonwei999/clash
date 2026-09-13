@@ -34,7 +34,7 @@ proxies:
   #  username:         # 用户名
   #  password:         # 密码
   #  udp: true
-  #  dialer-proxy: 香港-链式前置  # 指定前置代理节点组
+  #  dialer-proxy: ♻️ 香港手动  # 指定前置代理节点组
 # 全局配置 
 mixed-port: 7890
 allow-lan: true
