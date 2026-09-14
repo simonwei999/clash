@@ -1,0 +1,183 @@
+# DNS防泄露版本
+# 必读！！！
+# 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
+# 跑裸核用户请自行去掉下方控制面板模块的注释。
+
+# 机场订阅
+proxy-providers:
+  # 订阅 A：你的固定落地节点订阅
+  Airport1:
+    url: "你的订阅A链接填到这里"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+
+  # 订阅 B：你的 EdgeTunnel 订阅
+  Airport2:
+    url: "你的EdgeTunnel订阅B填到这里"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+
+# 节点信息
+proxies:
+  - {name: 直连, type: direct}
+
+# 全局配置 
+mixed-port: 7890
+allow-lan: true
+bind-address: "*"
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+log-level: warning
+keep-alive-idle: 600
+keep-alive-interval: 15
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 嗅探
+sniffer:
+  enable: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+# 入站
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: ["any:53", "tcp://any:53"]
+  auto-route: false
+  auto-redirect: false
+  auto-detect-interface: false
+
+# DNS模块
+dns:
+  enable: true
+  cache-algorithm: arc
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter-mode: blacklist
+  default-nameserver:
+    - https://223.5.5.5/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver:
+    - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
+  fake-ip-filter:
+    - "rule-set:fakeipfilter_domain"
+
+# 出站策略
+proxy-groups:
+
+  # ================= 1. 链式代理配置 (核心新增) =================
+  # 出口固定落地组（使用订阅 A 的节点）
+  - name: "🔒 固定落地-订阅A"
+    type: select
+    use:
+      - Airport1
+
+  # 前置链式加速组（用 EdgeTunnel 进，用订阅 A 选中的节点出）
+  - name: "⚡ EdgeTunnel链式加速"
+    type: select
+    use:
+      - Airport2
+    dialer-proxy: "🔒 固定落地-订阅A"
+  # ============================================================
+
+  # 节点手动选择
+  - {name: ♻️ 香港手动, type: select, include-all: true, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
+  - {name: ♻️ 日本手动, type: select, include-all: true, filter: "(?i)(?=.*(日|JP|Japan))^((?!(港|台|韩|新|美)).)*$"}
+  - {name: ♻️ 韩国手动, type: select, include-all: true, filter: "(?i)(?=.*(韩|KR|Korea))^((?!(港|台|日|新|美)).)*$"}
+  - {name: ♻️ 狮城手动, type: select, include-all: true, filter: "(?i)(?=.*(新加坡|SG|Singapore))^((?!(台|日|韩|美)).)*$"}
+  - {name: ♻️ 台湾手动, type: select, include-all: true, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
+  - {name: ♻️ 美国手动, type: select, include-all: true, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
+  - {name: ♻️ 英国手动, type: select, include-all: true, filter: "(?i)(?=.*(英|UK|London))^((?!(港|台|日|韩|新)).)*$"}
+  - {name: ♻️ 手动选择, type: select, include-all: true, filter: "^((?!直连).)*$"}
+  - {name: 🌐 全部节点, type: select, include-all: true}
+  - {name: 🌐 测试节点, type: select, include-all: true}
+
+  - {name: 🚀 默认代理, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点, 直连]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 测试节点, 直连]}
+  - {name: AI, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: meta, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: twitter, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: telegram, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: tiktok, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: google, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: github, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: microsoft, type: select, proxies: [直连, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: test, type: select, proxies: [🌐 测试节点]}
+
+# 规则匹配
+rules:
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_domain,直连
+  - RULE-SET,selfdirect,直连
+  - RULE-SET,test_domain,test
+  - RULE-SET,ai_ip,AI
+  - RULE-SET,ai_domain,AI  
+  - RULE-SET,meta_domain,meta
+  - RULE-SET,twitter_domain,twitter
+  - RULE-SET,twitter_ip,twitter
+  - RULE-SET,telegram_domain,telegram
+  - RULE-SET,telegram_ip,telegram
+  - RULE-SET,google_domain,google
+  - RULE-SET,google_ip,google
+  - RULE-SET,github_domain,github
+  - RULE-SET,tiktok_domain,tiktok
+  - RULE-SET,selfproxy,🚀 默认代理
+  - RULE-SET,microsoft_domain,microsoft
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,cn_ip,直连
+  - RULE-SET,geolocation-!cn,🚀 默认代理
+  - MATCH,🐟 漏网之鱼
+  
+# 规则集
+rule-providers: 
+  fakeipfilter_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs", path: ./rules/fakeip.mrs}
+  private_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs", path: ./rules/private_domain.mrs}
+  private_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs", path: ./rules/private_ip.mrs}  
+  selfproxy: {type: http, interval: 86400, behavior: classical, format: text, url: "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/proxy1.list", path: ./rules/selfproxy.list}
+  selfdirect: {type: http, interval: 86400, behavior: classical, format: text, url: "https://raw.githubusercontent.com/simonwei999/clash/refs/heads/main/direct1.list", path: ./rules/selfdirect.list}
+  geolocation-!cn: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs", path: ./rules/non_cn.mrs}
+  cn_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs", path: ./rules/cn_domain.mrs}
+  cn_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs", path: ./rules/cn_ip.mrs}
+  ai_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs", path: ./rules/ai_domain.mrs} 
+  ai_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/ai.mrs", path: ./rules/ai_ip.mrs}
+  meta_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meta.mrs", path: ./rules/meta_domain.mrs}
+  twitter_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs", path: ./rules/twitter_domain.mrs}
+  twitter_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs", path: ./rules/twitter_ip.mrs}
+  microsoft_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs", path: ./rules/microsoft_domain.mrs}
+  telegram_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs", path: ./rules/telegram_domain.mrs}
+  telegram_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs", path: ./rules/telegram_ip.mrs}
+  tiktok_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs", path: ./rules/tiktok_domain.mrs}
+  google_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  google_ip: {type: http, interval: 86400, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  github_domain: {type: http, interval: 86400, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
+  test_domain: {type: http, interval: 86400, behavior: classical, format: text, url: "https://github.com/simonwei999/clash/raw/refs/heads/main/test.list", path: ./rules/test.list}
