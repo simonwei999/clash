@@ -109,6 +109,15 @@ proxy-groups:
       - Airport2
     dialer-proxy: "🔒 固定落地-订阅A"
   # ============================================================
+  # 改为 url-test 自动测试并选择延迟最低的 EdgeTunnel 前置入口
+  #- name: "⚡ EdgeTunnel链式加速"
+  #  type: url-test
+  #  url: "https://www.gstatic.com/generate_204"
+  #  interval: 300
+  #  tolerance: 50 # 延迟相差 50ms 以内不频繁切换，保证连接稳定
+  #  use:
+  #    - Airport2
+  #  dialer-proxy: "🔒 固定落地-订阅A"
 
   # 节点手动选择
   - {name: ♻️ 香港手动, type: select, include-all: true, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
