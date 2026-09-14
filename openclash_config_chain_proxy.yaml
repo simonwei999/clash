@@ -5,7 +5,7 @@
 # 机场订阅
 proxy-providers:
   Airport1:
-    url: "机场订阅填到这里"
+    url: "购买的机场订阅填到这里"
     type: http
     interval: 86400
     health-check:
@@ -15,7 +15,7 @@ proxy-providers:
     proxy: 直连
 
   Airport2:
-    url: "机场订阅填到这里"
+    url: "Edgetunnel的订阅填到这里"
     type: http
     interval: 86400
     health-check:
