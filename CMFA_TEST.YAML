@@ -99,28 +99,20 @@ dns:
 # 策略组保持不变
 proxy-groups:
 
-  # 自动测速选择
-#  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
-#  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(日|JP|Japan))^((?!(港|台|韩|新|美)).)*$"}
-#  - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(韩|KR|Korea))^((?!(港|台|日|新|美)).)*$"}
-#  - {name: ♻️ 狮城自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(新加坡|SG|Singapore))^((?!(台|日|韩|美)).)*$"}
-#  - {name: ♻️ 台湾自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
-#  - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
-#  - {name: ♻️ 英国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?i)(?=.*(英|UK|London))^((?!(港|台|日|韩|新)).)*$"}
-#  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "^((?!直连).)*$"}
-#  - {name: 🌐 全部节点, type: select, include-all: true}
+  # ================= 1. 链式代理配置 (核心新增) =================
+  # 出口固定落地组（使用订阅 A 的节点）
+  - name: "🔒 固定落地-订阅A"
+    type: select
+    use:
+      - Airport1
 
-#  - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
-#  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点, 直连]}
-#  - {name: AI, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: meta, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: twitter, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: telegram, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: tiktok, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: google, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: github, type: select, proxies: [♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-#  - {name: microsoft, type: select, proxies: [直连, ♻️ 狮城自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 英国自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, ♻️ 自动选择, 🌐 全部节点]}
-
+  # 前置链式加速组（用 EdgeTunnel 进，用订阅 A 选中的节点出）
+  - name: "⚡ EdgeTunnel链式加速"
+    type: select
+    use:
+      - Airport2
+    dialer-proxy: "🔒 固定落地-订阅A"
+  # ============================================================
 
   # 节点手动选择
   - {name: ♻️ 香港手动, type: select, include-all: true, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
@@ -134,16 +126,16 @@ proxy-groups:
   - {name: 🌐 全部节点, type: select, include-all: true}
   - {name: 🌐 测试节点, type: select, include-all: true}
 
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点, 直连]}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 测试节点, 直连]}
-  - {name: AI, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: meta, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: twitter, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: telegram, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: tiktok, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: google, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: github, type: select, proxies: [♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: microsoft, type: select, proxies: [直连, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: 🚀 默认代理, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点, 直连]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 测试节点, 直连]}
+  - {name: AI, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: meta, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: twitter, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: telegram, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: tiktok, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: google, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: github, type: select, proxies: [⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
+  - {name: microsoft, type: select, proxies: [直连, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 狮城手动, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
   - {name: test, type: select, proxies: [🌐 测试节点]}
 # 规则匹配
 rules:
