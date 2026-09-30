@@ -106,7 +106,7 @@ proxy-groups:
     use:
       - Airport1
 
-  # 前置链式加速组（用 EdgeTunnel 进，用订阅 A 选中的节点出）
+  # 前置链式，用固定的节点出口
   - name: "⚡ 固定出口落地链式代理"
     type: select
     use:
