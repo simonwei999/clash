@@ -94,13 +94,13 @@ dns:
 proxy-groups:
 
   # ================= 1. 链式代理配置 (核心新增) =================
-  # 出口固定落地组（使用订阅 A 的节点）
+  # 此为入口中转地址
   - name: "🔒 入口-订阅地址"
     type: select
     use:
       - Airport1
 
-  # 前置链式加速组（用 EdgeTunnel 进，用订阅 A 选中的节点出）
+  # 使用Airport2 作为出口，入口订阅地址作为入口
   - name: "⚡ 固定出口-链式代理"
     type: select
     use:
