@@ -3,7 +3,7 @@ mode: rule
 
 proxy-providers:
   Airport1:
-    url: "你的机场订阅链接"
+    url: "填写中转入口订阅链接"
     type: http
     interval: 86400
     health-check:
@@ -14,7 +14,7 @@ proxy-providers:
     # 显式指定手机端存储路径
 
   Airport2:
-    url: "你的机场订阅链接"
+    url: "填写固定出口订阅链接"
     type: http
     interval: 86400
     health-check:
@@ -100,28 +100,28 @@ dns:
 proxy-groups:
 
   # ================= 1. 链式代理配置 (核心新增) =================
-  # 出口固定落地组（使用订阅 A 的节点）
-  - name: "🔒 固定落地-订阅A"
+  # 入口，使用airport1的节点作为中转
+  - name: "🔒 入口机场中转用"
     type: select
     use:
       - Airport1
 
   # 前置链式加速组（用 EdgeTunnel 进，用订阅 A 选中的节点出）
-  - name: "⚡ EdgeTunnel链式加速"
+  - name: "⚡ 固定出口落地链式代理"
     type: select
     use:
       - Airport2
-    dialer-proxy: "🔒 固定落地-订阅A"
+    dialer-proxy: "🔒 入口机场中转用"
   # ============================================================
   # 改为 url-test 自动测试并选择延迟最低的 EdgeTunnel 前置入口
-  #- name: "⚡ EdgeTunnel链式加速"
+  #- name: "⚡ 固定出口落地链式代理"
   #  type: url-test
   #  url: "https://www.gstatic.com/generate_204"
   #  interval: 300
   #  tolerance: 50 # 延迟相差 50ms 以内不频繁切换，保证连接稳定
   #  use:
   #    - Airport2
-  #  dialer-proxy: "🔒 固定落地-订阅A"
+  #  dialer-proxy: "🔒 入口机场中转用"
 
   # 节点手动选择
   - {name: ♻️ 香港手动, type: select, include-all: true, filter: "(?i)(?=.*(港|HK|Hong))^((?!(台|日|韩|新|美)).)*$"}
@@ -131,21 +131,20 @@ proxy-groups:
   - {name: ♻️ 台湾手动, type: select, include-all: true, filter: "(?i)(?=.*(台|TW|Taiwan))^((?!(港|日|韩|新|美)).)*$"}
   - {name: ♻️ 美国手动, type: select, include-all: true, filter: "(?i)(?=.*(美|US|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 英国手动, type: select, include-all: true, filter: "(?i)(?=.*(英|UK|London))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 手动选择, type: select, include-all: true, filter: "^((?!直连).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
   - {name: 🌐 测试节点, type: select, include-all: true}
 
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点, 直连]}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点, 直连]}
-  - {name: AI, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: meta, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: twitter, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: telegram, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: tiktok, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: google, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: github, type: select, proxies: [♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: microsoft, type: select, proxies: [直连, ♻️ 狮城手动, ⚡ EdgeTunnel链式加速, 🔒 固定落地-订阅A, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, ♻️ 手动选择, 🌐 全部节点]}
-  - {name: test, type: select, proxies: [⚡ EdgeTunnel链式加速, 🌐 测试节点]}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点, 直连]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点, 直连]}
+  - {name: AI, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: meta, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: twitter, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: telegram, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: tiktok, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: google, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: github, type: select, proxies: [♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: microsoft, type: select, proxies: [直连, ♻️ 狮城手动, ⚡ 固定出口落地链式代理, 🔒 入口机场中转用, ♻️ 日本手动, ♻️ 韩国手动, ♻️ 英国手动, ♻️ 香港手动, ♻️ 美国手动, ♻️ 台湾手动, 🌐 全部节点]}
+  - {name: test, type: select, proxies: [⚡ 固定出口落地链式代理, 🌐 测试节点]}
 
 # 规则匹配
 rules:
