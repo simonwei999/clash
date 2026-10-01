@@ -7,4 +7,4 @@ https://aus.simonwei2.cc.cd:4159/ARgDFTDdqq7rJ7iflM/
 TW VPS
 https://54.54.62.125:33918/yntHlXjjjd8UgGWx3z/
 JP VPS
-[https://35.79.15.143:11495/8iLcKFVYzWwWUtKOCI/](https://35.79.15.143:2052/jpvps/panel/)
+https://35.79.15.143:2052/jpvps/panel/
