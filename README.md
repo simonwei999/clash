@@ -8,5 +8,5 @@ TW VPS
 https://54.54.62.125:2083/yntHlXjjjd8UgGWx3z/
 https://tw.simonwei2.cc.cd:2083/yntHlXjjjd8UgGWx3z/
 JP VPS
-https://35.79.15.143:2053/
-https://jp.simonwei2.cc.cd:2053/
+https://jp.simonwei2.cc.cd:2053/Mt47nY2itAolqfeTZK/
+
