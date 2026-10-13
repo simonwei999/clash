@@ -10,3 +10,4 @@ https://tw.simonwei2.cc.cd:2083/yntHlXjjjd8UgGWx3z/
 JP VPS
 https://jp.simonwei2.cc.cd:2053/Mt47nY2itAolqfeTZK/
 
+https://raw.githubusercontent.com/OgdenThomas/freesub/main/output/by-country/clash-SG.yaml?v=1791852034
